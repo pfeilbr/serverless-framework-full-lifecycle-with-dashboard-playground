@@ -19,6 +19,14 @@ org: pfeilbr
 
 ![](https://www.evernote.com/l/AAH9J_9FRfFGH7uiu2JonnyeBowUC_-cU0kB/image.png)
 
+To disable, add the following to `serverless.yml`
+
+```yaml
+custom:
+  enterprise:
+    collectLambdaLogs: false
+```
+
 Serverless framework creates a role during the deploy. This allows for the cloudwatch log group logs to be sent to serverless SaaS app.  e.g. `arn:aws:iam::529276214230:role/serverless-with-dashboard-EnterpriseLogAccessIamRo-19SDI69RM1KJ4`
 
 ![](https://www.evernote.com/l/AAFnznpUKxhHjIXCHwFwzUcmYXBdiLCgln0B/image.png)
@@ -126,6 +134,12 @@ This is done via [Cross-Account Log Data Sharing with Subscriptions](https://doc
 ![](https://www.evernote.com/l/AAGF3ML-wkFM1bPRMMGiUtvsKzXxGmI1E3gB/image.png)
 
 ![](https://www.evernote.com/l/AAHY5jTZcXpLPJJwKhIsKWgRblpvrmHgXlsB/image.png)
+
+Send notifications (e.g. email)
+
+![](https://www.evernote.com/l/AAGxGtV1-idIoKXzkqvTi4PMf-zWDtoNMRcB/image.png)
+
+![](https://www.evernote.com/l/AAEfN4z9jZZFVaDVyiQOBU1-FP9kIwZnmnEB/image.png)
 
 ---
 
