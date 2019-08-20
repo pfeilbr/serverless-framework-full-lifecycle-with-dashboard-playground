@@ -42,6 +42,7 @@ inline policy
 ```
 
 trust relationship
+> trust serverless aws account `802587217904`
 ```json
 {
   "Version": "2012-10-17",
