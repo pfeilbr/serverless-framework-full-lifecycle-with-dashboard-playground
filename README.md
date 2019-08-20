@@ -19,6 +19,49 @@ org: pfeilbr
 
 ![](https://www.evernote.com/l/AAH9J_9FRfFGH7uiu2JonnyeBowUC_-cU0kB/image.png)
 
+Serverless framework creates a role during the deploy. This allows for the cloudwatch log group logs to be sent to serverless SaaS app.  e.g. `arn:aws:iam::529276214230:role/serverless-with-dashboard-EnterpriseLogAccessIamRo-19SDI69RM1KJ4`
+
+![](https://www.evernote.com/l/AAFnznpUKxhHjIXCHwFwzUcmYXBdiLCgln0B/image.png)
+
+inline policy
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "logs:FilterLogEvents"
+            ],
+            "Resource": [
+                "arn:aws:logs:us-east-1:529276214230:log-group:/aws/lambda/serverless-with-dashboard-playground-01-dev-hello:*"
+            ],
+            "Effect": "Allow"
+        }
+    ]
+}
+```
+
+trust relationship
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::802587217904:root"
+      },
+      "Action": "sts:AssumeRole",
+      "Condition": {
+        "StringEquals": {
+          "sts:ExternalId": "ServerlessEnterprise-LGGXBmZw2Z47MmWq6b"
+        }
+      }
+    }
+  ]
+}
+```
+
 **Instrumented/wrapped Code Example**
 
 On deploy, serverless instruments/wraps your code/handlers.  You don't see this locally in your codebase.  You only see on the deployment side in AWS.
@@ -63,6 +106,9 @@ This is done via [Cross-Account Log Data Sharing with Subscriptions](https://doc
 **Serverless Dashboard | Views**
 
 ![](https://www.evernote.com/l/AAGYJOJTHApN_JpkCV9-zdcb715b6wEMRboB/image.png)
+
+"safeguard policies" are evaluated on `serverless deploy`
+![](https://www.evernote.com/l/AAHh34xEDRZPMZvdU3OB9gTRjZGuTcfWavsB/image.png)
 
 ![](https://www.evernote.com/l/AAHPvh8KYGtDzp-FJpeJJkD9YQMDlMoV_ZkB/image.png)
 
